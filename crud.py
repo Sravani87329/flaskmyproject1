@@ -47,7 +47,7 @@ def view1():
     con = sqlite3.connect("employee.db")  
     con.row_factory = sqlite3.Row  
     cur = con.cursor()  
-    cur.execute(f"select * from Employees where id={id}")  
+    cur.execute(f"select * from Employees where id={?}",params)  
     rows = cur.fetchall()  
     return render_template("view1.html",rows = rows)
  
@@ -66,7 +66,7 @@ def deleterecord():
     with sqlite3.connect("employee.db") as con:  
         try:  
             cur = con.cursor()  
-            cur.execute(f"delete from Employees where id = {id}") 
+            cur.execute(f"delete from Employees where id = {?}",params) 
             msg = "record successfully deleted"  
         except:  
             msg = "can't be deleted"  
